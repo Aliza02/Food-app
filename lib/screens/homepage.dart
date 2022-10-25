@@ -8,7 +8,6 @@ class HomePage extends StatelessWidget {
     context,
     String foodTitle,
     String image,
-    foodSubTitle,
     String rating,
     String price,
   }) {
@@ -27,55 +26,75 @@ class HomePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(
-                  foodTitle,
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.w900),
-                ),
-                Text(
-                  foodSubTitle,
-                  style: TextStyle(fontSize: 18, color: Colors.grey),
-                ),
                 Container(
-                  height: 50,
-                  width: double.infinity,
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.star,
-                        color: Colors.yellow[600],
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        "$rating Ratings",
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "\$$price",
-                        style: TextStyle(
-                            color: Theme.of(context).accentColor,
-                            fontSize: 22,
-                            fontWeight: FontWeight.w900),
-                      ),
-                    ],
+                  margin: EdgeInsets.fromLTRB(20, 0, 0, 6),
+                  child: Text(
+                    foodTitle,
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w900),
                   ),
+                ),
+                // Text(
+                //   foodSubTitle,
+                //   style: TextStyle(fontSize: 18, color: Colors.grey),
+                // ),
+                Container(
+                  padding: EdgeInsets.all(5),
+                  margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                  height: 35,
+                  width: 200,
+                  child: ElevatedButton(
+                    child: Text("Add to cart"),
+                    onPressed: () {
+                      debugPrint('dada');
+                    },
+                    style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        // backgroundColor: Theme.of(context).primaryColor,
+                        disabledBackgroundColor: Colors.pinkAccent),
+                  ),
+                  //
+                  // Row(
+                  //   children: [
+                  //     Icon(
+                  //       Icons.star,
+                  //       color: Colors.yellow[600],
+                  //     ),
+                  //     SizedBox(
+                  //       width: 5,
+                  //     ),
+                  //     Text(
+                  //       "$rating Ratings",
+                  //       style: TextStyle(
+                  //         fontSize: 16,
+                  //         color: Colors.grey,
+                  //       ),
+                  //     ),
+                  //     SizedBox(
+                  //       width: 10,
+                  //     ),
+                  //     Text(
+                  //       "\$$price",
+                  //       style: TextStyle(
+                  //           color: Theme.of(context).accentColor,
+                  //           fontSize: 22,
+                  //           fontWeight: FontWeight.w900),
+                  //     ),
+                  //   ],
+                  // ),
                 ),
               ],
             ),
           ),
         ),
-        CircleAvatar(
-          maxRadius: 60,
-          backgroundColor: Colors.transparent,
-          backgroundImage: AssetImage(
-            "images/$image.png",
+        Container(
+          margin: EdgeInsets.fromLTRB(0, 20, 85, 0),
+          child: CircleAvatar(
+            maxRadius: 60,
+            backgroundColor: Colors.transparent,
+            backgroundImage: AssetImage(
+              "images/$image.png",
+            ),
           ),
         ),
       ],
@@ -130,7 +149,7 @@ class HomePage extends StatelessWidget {
           children: [
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-              height: 50,
+              height: 20,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -146,7 +165,7 @@ class HomePage extends StatelessWidget {
                   ),
                   IconButton(
                     icon: Icon(
-                      Icons.notifications,
+                      Icons.shopping_cart,
                       size: 35,
                       color: Colors.white,
                     ),
@@ -162,41 +181,41 @@ class HomePage extends StatelessWidget {
                   child: Column(
                 children: [
                   Container(
-                    height: 120,
+                    height: 0,
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Row(
                       children: [
-                        CircleAvatar(
-                          maxRadius: 45,
-                          backgroundColor: Colors.white,
-                          child: CircleAvatar(
-                            maxRadius: 40,
-                            backgroundImage:
-                                AssetImage("images/profileimage.jpg"),
-                          ),
-                        ),
-                        Container(
-                          height: 80,
-                          width: 180,
-                          child: ListTile(
-                            title: Text(
-                              "Have you upset",
-                              style: TextStyle(
-                                fontSize: 21,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            subtitle: Text(
-                              "Stomach?",
-                              style: TextStyle(
-                                fontSize: 21,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        )
+                        // CircleAvatar(
+                        //   maxRadius: 45,
+                        //   backgroundColor: Colors.white,
+                        //   child: CircleAvatar(
+                        //     maxRadius: 40,
+                        //     backgroundImage:
+                        //         AssetImage("images/profileimage.jpg"),
+                        //   ),
+                        // ),
+                        // Container(
+                        //   height: 80,
+                        //   width: 180,
+                        //   child: ListTile(
+                        //     title: Text(
+                        //       "Have you upset",
+                        //       style: TextStyle(
+                        //         fontSize: 21,
+                        //         color: Colors.white,
+                        //         fontWeight: FontWeight.bold,
+                        //       ),
+                        //     ),
+                        //     subtitle: Text(
+                        //       "Stomach?",
+                        //       style: TextStyle(
+                        //         fontSize: 21,
+                        //         color: Colors.white,
+                        //         fontWeight: FontWeight.bold,
+                        //       ),
+                        //     ),
+                        //   ),
+                        // )
                       ],
                     ),
                   )
@@ -230,7 +249,6 @@ class HomePage extends StatelessWidget {
                         children: [
                           _buildSingleFeature(
                             context: context,
-                            foodSubTitle: "7 Oceans Hotel",
                             foodTitle: "Pasta Cheese",
                             price: "40",
                             rating: "4.1",
@@ -238,8 +256,7 @@ class HomePage extends StatelessWidget {
                           ),
                           _buildSingleFeature(
                             context: context,
-                            foodSubTitle: "5 Star Hotel",
-                            foodTitle: "Pasta Cheese",
+                            foodTitle: " Beef Steak",
                             price: "50",
                             rating: "5.0",
                             image: "chickenbrost",
@@ -259,7 +276,7 @@ class HomePage extends StatelessWidget {
 
   Widget _buildBottomPart(context) {
     return Expanded(
-      flex: 2,
+      flex: 5,
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 20),
         color: Color(0xfff2f3f4),
@@ -280,7 +297,7 @@ class HomePage extends StatelessWidget {
                         children: [
                           _buildSingleCategory(name: "Pizza", image: "pizza"),
                           _buildSingleCategory(name: "Salad", image: "salad"),
-                          _buildSingleCategory(name: "Bargar", image: "bargar"),
+                          _buildSingleCategory(name: "Burger", image: "bargar"),
                         ],
                       ),
                     ),

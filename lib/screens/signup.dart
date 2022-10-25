@@ -141,6 +141,7 @@ class _SignUpState extends State<SignUp> {
 
   Widget _buildAllTextFormField() {
     return Container(
+      margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
       height: 400,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -222,7 +223,9 @@ class _SignUpState extends State<SignUp> {
     return Scaffold(
       key: scaffold,
       body: Container(
-        padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+        padding: EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+        margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+        // constraints: BoxConstraints.tightForFinite(height: 300),
         child: ListView(
           children: [
             Column(
