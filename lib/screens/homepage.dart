@@ -126,7 +126,7 @@ class HomePage extends StatelessWidget {
           debugPrint("dadaafaf");
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (ctx) => Pizza(),
+              builder: (context) => Pizza(),
             ),
           );
         }
@@ -134,7 +134,7 @@ class HomePage extends StatelessWidget {
         if (name == 'Salad') {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (ctx) => Contact(),
+              builder: (context) => Contact(),
             ),
           );
         }
@@ -203,6 +203,11 @@ class HomePage extends StatelessWidget {
                       Scaffold.of(context).openDrawer();
                     },
                   ),
+                  // Text(
+                  //   "Food App",
+                  //   style:
+                  //       TextStyle(fontSize: 26.0, fontWeight: FontWeight.bold),
+                  // ),
                   IconButton(
                     icon: Icon(
                       Icons.shopping_cart,
@@ -294,7 +299,7 @@ class HomePage extends StatelessWidget {
                         children: [
                           _buildSingleFeature(
                             context: context,
-                            foodTitle: "Pasta Cheese",
+                            foodTitle: "Cheese Pasta",
                             price: "40 dollars",
                             rating: "4.1",
                             image: "pastacheese",
@@ -302,6 +307,20 @@ class HomePage extends StatelessWidget {
                           _buildSingleFeature(
                             context: context,
                             foodTitle: " Beef Steak",
+                            price: "50 dollars",
+                            rating: "5.0",
+                            image: "chickenbrost",
+                          ),
+                          _buildSingleFeature(
+                            context: context,
+                            foodTitle: " Smash Burger",
+                            price: "80 dollars",
+                            rating: "5.0",
+                            image: "bargar",
+                          ),
+                          _buildSingleFeature(
+                            context: context,
+                            foodTitle: " Fried Rice",
                             price: "50 dollars",
                             rating: "5.0",
                             image: "chickenbrost",
@@ -476,11 +495,39 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       key: _scaffoldKey,
       drawer: _buildMyDrawer(context),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(100.0),
+        child: AppBar(
+          backgroundColor: Colors.pinkAccent,
+          actions: [
+            Container(
+              margin: EdgeInsets.fromLTRB(0, 12.0, 12.0, 0),
+              child: IconButton(
+                icon: Icon(
+                  Icons.shopping_cart,
+                  size: 35,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  // FirebaseAuth.instance.signOut();
+                  print("added");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => productlist()),
+                  );
+                },
+              ),
+            ),
+          ],
+          titleSpacing: 20,
+          title: Text("Food App"),
+        ),
+      ),
       body: SafeArea(
         child: Container(
           child: Column(
             children: [
-              _buildTopPart(context),
+              // _buildTopPart(context),
               _buildBottomPart(context),
             ],
           ),

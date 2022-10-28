@@ -35,23 +35,28 @@ class productlist extends StatelessWidget {
                 itemBuilder: (context, index) => Container(
                   height: 100.0,
                   width: 100.0,
-                  child: Card(
-                    child: ListTile(
-                      trailing: IconButton(
-                        icon: Icon(Icons.cancel),
-                        onPressed: () {
-                          ProductProvider.removeproduct(
-                              product('dadaa', 'dadad'));
-                          debugPrint("Dada");
-                        },
-                      ),
-                      title: Text(
-                        ProductProvider.added_product[index].title,
-                        style: TextStyle(fontSize: 19.0),
-                      ),
-                      subtitle: Text(
-                        ProductProvider.product_price[index].price,
-                        style: TextStyle(fontSize: 16.0),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Card(
+                      child: ListTile(
+                        trailing: IconButton(
+                          icon: Icon(Icons.cancel),
+                          onPressed: () {
+                            ProductProvider.removeproduct(product(
+                                ProductProvider.added_product[index].title,
+                                ProductProvider.product_price[index].price));
+                            ;
+                            debugPrint("Dada");
+                          },
+                        ),
+                        title: Text(
+                          ProductProvider.added_product[index].title,
+                          style: TextStyle(fontSize: 19.0),
+                        ),
+                        subtitle: Text(
+                          ProductProvider.product_price[index].price,
+                          style: TextStyle(fontSize: 16.0),
+                        ),
                       ),
                     ),
                   ),
