@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myfood_app/screens/homepage.dart';
 
-class About extends StatelessWidget {
+class Pizza extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,7 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:myfood_app/models/product.dart';
+import 'package:myfood_app/provider/product_provider.dart';
 import 'package:myfood_app/screens/about.dart';
 import 'package:myfood_app/screens/contact.dart';
+import 'package:myfood_app/screens/login.dart';
+import 'package:myfood_app/screens/pizza.dart';
+import 'package:myfood_app/screens/product_list.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   Widget _buildSingleFeature({
@@ -19,7 +25,7 @@ class HomePage extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
                 color: Colors.white, borderRadius: BorderRadius.circular(20)),
-            height: 230,
+            height: 320,
             width: 210,
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: Column(
@@ -33,19 +39,31 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.w900),
                   ),
                 ),
+
+                Container(
+                  margin: EdgeInsets.fromLTRB(20, 0, 0, 6),
+                  child: Text(
+                    price,
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                ),
                 // Text(
                 //   foodSubTitle,
                 //   style: TextStyle(fontSize: 18, color: Colors.grey),
                 // ),
                 Container(
                   padding: EdgeInsets.all(5),
-                  margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                  margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                   height: 35,
                   width: 200,
                   child: ElevatedButton(
                     child: Text("Add to cart"),
                     onPressed: () {
-                      debugPrint('dada');
+                      Provider.of<ProductProvider>(context, listen: false)
+                          .addproduct(product(foodTitle, price));
+                      Provider.of<ProductProvider>(context, listen: false)
+                          .addprice(product(foodTitle, price));
+                      debugPrint('add to cart');
                     },
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
@@ -88,7 +106,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
         Container(
-          margin: EdgeInsets.fromLTRB(0, 20, 85, 0),
+          margin: EdgeInsets.fromLTRB(0, 5, 85, 0),
           child: CircleAvatar(
             maxRadius: 60,
             backgroundColor: Colors.transparent,
@@ -101,42 +119,62 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildSingleCategory({String image, String name}) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Container(
-        height: 200,
-        width: 180,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height: 120,
-              width: 120,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    height: 80,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("images/$image.png"),
+  Widget _buildSingleCategory(context, {String image, String name}) {
+    return GestureDetector(
+      onTap: () {
+        if (name == 'Pizza') {
+          debugPrint("dadaafaf");
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (ctx) => Pizza(),
+            ),
+          );
+        }
+
+        if (name == 'Salad') {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (ctx) => Contact(),
+            ),
+          );
+        }
+      },
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Container(
+          height: 200,
+          width: 180,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: 120,
+                width: 120,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      height: 80,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage("images/$image.png"),
+                        ),
                       ),
                     ),
-                  ),
-                  Text(
-                    name,
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w900,
+                    Text(
+                      name,
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w900,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            )
-          ],
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -155,12 +193,14 @@ class HomePage extends StatelessWidget {
                 children: [
                   IconButton(
                     icon: Icon(
-                      Icons.sort,
+                      Icons.menu,
                       size: 35,
                       color: Colors.white,
                     ),
                     onPressed: () {
-                      _scaffoldKey.currentState.openDrawer();
+                      print("dada");
+                      // _scaffoldKey.currentState.openDrawer();
+                      Scaffold.of(context).openDrawer();
                     },
                   ),
                   IconButton(
@@ -170,7 +210,12 @@ class HomePage extends StatelessWidget {
                       color: Colors.white,
                     ),
                     onPressed: () {
-                      FirebaseAuth.instance.signOut();
+                      // FirebaseAuth.instance.signOut();
+                      print("added");
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => productlist()),
+                      );
                     },
                   ),
                 ],
@@ -250,14 +295,14 @@ class HomePage extends StatelessWidget {
                           _buildSingleFeature(
                             context: context,
                             foodTitle: "Pasta Cheese",
-                            price: "40",
+                            price: "40 dollars",
                             rating: "4.1",
                             image: "pastacheese",
                           ),
                           _buildSingleFeature(
                             context: context,
                             foodTitle: " Beef Steak",
-                            price: "50",
+                            price: "50 dollars",
                             rating: "5.0",
                             image: "chickenbrost",
                           ),
@@ -295,9 +340,12 @@ class HomePage extends StatelessWidget {
                       height: 240,
                       child: Row(
                         children: [
-                          _buildSingleCategory(name: "Pizza", image: "pizza"),
-                          _buildSingleCategory(name: "Salad", image: "salad"),
-                          _buildSingleCategory(name: "Burger", image: "bargar"),
+                          _buildSingleCategory(context,
+                              name: "Pizza", image: "pizza"),
+                          _buildSingleCategory(context,
+                              name: "Salad", image: "salad"),
+                          _buildSingleCategory(context,
+                              name: "Burger", image: "bargar"),
                         ],
                       ),
                     ),
@@ -343,11 +391,12 @@ class HomePage extends StatelessWidget {
       child: ListView(
         children: [
           UserAccountsDrawerHeader(
-            currentAccountPicture: CircleAvatar(
-              backgroundImage: AssetImage("images/profileimage.jpg"),
-            ),
-            accountName: Text("Sabir Bugti"),
-            accountEmail: Text("Sabirbugti@gmail.com"),
+            // currentAccountPicture: CircleAvatar(
+            //   // backgroundImage: AssetImage("images/profileimage.jpg"),
+
+            // ),
+            accountName: Text("Food App"),
+            accountEmail: Text("foodapp@gmail.com"),
           ),
           ListTile(
             leading: Icon(
@@ -361,7 +410,7 @@ class HomePage extends StatelessWidget {
             onTap: () {
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
-                  builder: (ctx) => Contact(),
+                  builder: (context) => Contact(),
                 ),
               );
             },
@@ -376,7 +425,7 @@ class HomePage extends StatelessWidget {
             onTap: () {
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
-                  builder: (ctx) => About(),
+                  builder: (context) => About(),
                 ),
               );
             },
@@ -388,6 +437,13 @@ class HomePage extends StatelessWidget {
             title: Text("About Page"),
           ),
           ListTile(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => productlist(),
+                ),
+              );
+            },
             leading: Icon(
               Icons.shopping_cart,
               size: 30,
@@ -396,6 +452,11 @@ class HomePage extends StatelessWidget {
             title: Text("Order"),
           ),
           ListTile(
+            onTap: () {
+              FirebaseAuth.instance.signOut();
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => Login()));
+            },
             leading: Icon(
               Icons.exit_to_app,
               size: 30,
