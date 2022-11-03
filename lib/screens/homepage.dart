@@ -5,7 +5,8 @@ import 'package:myfood_app/provider/product_provider.dart';
 import 'package:myfood_app/screens/about.dart';
 import 'package:myfood_app/screens/contact.dart';
 import 'package:myfood_app/screens/login.dart';
-import 'package:myfood_app/screens/pizza.dart';
+// import 'package:myfood_app/screens/pizza.dart';
+import 'package:myfood_app/screens/pizza_category.dart';
 import 'package:myfood_app/screens/product_list.dart';
 import 'package:provider/provider.dart';
 
@@ -120,6 +121,7 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _buildSingleCategory(context, {String image, String name}) {
+    bool yes = MediaQuery.of(context).size.height > 900;
     return GestureDetector(
       onTap: () {
         if (name == 'Pizza') {
@@ -137,14 +139,24 @@ class HomePage extends StatelessWidget {
               builder: (context) => Contact(),
             ),
           );
+          if (name == 'Burger') {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => Contact(),
+              ),
+            );
+          }
         }
       },
       child: Card(
+        margin: EdgeInsets.only(
+            top: MediaQuery.of(context).size.width / 100,
+            left: MediaQuery.of(context).size.width / 100),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
         child: Container(
-          height: 200,
+          height: MediaQuery.of(context).size.width * 0.5,
           width: 180,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -280,6 +292,11 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _buildFeatureProduct(context) {
+    var size = MediaQuery.of(context).size;
+    var height = size.height;
+    var width = size.width;
+    bool yes = MediaQuery.of(context).size.width > 600;
+
     return Expanded(
       child: Container(
         child: Column(
@@ -373,6 +390,9 @@ class HomePage extends StatelessWidget {
               ),
             ),
             Container(
+              // margin: EdgeInsets.only(
+              //     top: MediaQuery.of(context).size.width / 10,
+              //     bottom: MediaQuery.of(context).size.width / 10),
               width: double.infinity,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -492,6 +512,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+
     return Scaffold(
       key: _scaffoldKey,
       drawer: _buildMyDrawer(context),
