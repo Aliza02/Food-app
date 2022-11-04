@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:myfood_app/models/product.dart';
 import 'package:myfood_app/provider/product_provider.dart';
 
-class Pizza extends StatelessWidget {
+class Salad extends StatelessWidget {
   Widget _buildSingleFeature({
     context,
     String foodTitle,
@@ -206,7 +206,7 @@ class Pizza extends StatelessWidget {
             ),
           ],
           titleSpacing: 20,
-          title: Text("Pizza"),
+          title: Text("Salad"),
         ),
       ),
       body: Container(
@@ -221,32 +221,15 @@ class Pizza extends StatelessWidget {
                   children: [
                     _buildSingleFeature(
                       context: context,
-                      foodTitle: "Chicken Tikka",
-                      price: "\$80",
-                      image: "tikka",
+                      foodTitle: "Ceaser Salad",
+                      price: "\$20",
+                      image: "salad",
                     ),
                     _buildSingleFeature(
                       context: context,
-                      foodTitle: "Chicken Fajita",
-                      price: "\$70",
-                      image: "fajita",
-                    ),
-                  ],
-                ),
-                SizedBox(height: 30.0),
-                Row(
-                  children: [
-                    _buildSingleFeature(
-                      context: context,
-                      foodTitle: "Meat Pizza",
-                      price: "\$80 ",
-                      image: "fajita",
-                    ),
-                    _buildSingleFeature(
-                      context: context,
-                      foodTitle: "Cheese Pizza",
-                      price: "\$70 ",
-                      image: "tikka",
+                      foodTitle: "Green Salad",
+                      price: "\$25",
+                      image: "salad",
                     ),
                   ],
                 ),
@@ -255,15 +238,32 @@ class Pizza extends StatelessWidget {
                   children: [
                     _buildSingleFeature(
                       context: context,
-                      foodTitle: "Pepperoni",
-                      price: "\$80",
-                      image: "tikka",
+                      foodTitle: "Greek Salad",
+                      price: "\$34 ",
+                      image: "salad",
                     ),
                     _buildSingleFeature(
                       context: context,
-                      foodTitle: "Veggie Pizza",
-                      price: "\$70",
-                      image: "fajita",
+                      foodTitle: "Chicken Salad",
+                      price: "\$25 ",
+                      image: "salad",
+                    ),
+                  ],
+                ),
+                SizedBox(height: 30.0),
+                Row(
+                  children: [
+                    _buildSingleFeature(
+                      context: context,
+                      foodTitle: "Cobb Salad",
+                      price: "\$20",
+                      image: "salad",
+                    ),
+                    _buildSingleFeature(
+                      context: context,
+                      foodTitle: "Fattoush",
+                      price: "\$10",
+                      image: "salad",
                     ),
                   ],
                 ),

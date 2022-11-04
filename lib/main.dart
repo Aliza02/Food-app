@@ -35,23 +35,8 @@ class MyApp extends StatelessWidget {
           primaryColor: Colors.pinkAccent,
           // accentColor: Color(0xff04d4ee),
         ),
-        home: HomePage(),
+        home: Login(),
       ),
     );
-    // return MaterialApp(
-    //   debugShowCheckedModeBanner: false,
-
-    //   // home: StreamBuilder(
-    //   //   stream: FirebaseAuth.instance.authStateChanges(),
-    //   //   builder: (context, snapshot) {
-    //   //     if (snapshot.hasData) {
-    //   //       return HomePage();
-    //   //     } else {
-    //   //       return Login();
-    //   //     }
-    //   //   },
-    //   // ),
-
-    // );
   }
 }

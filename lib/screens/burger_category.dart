@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:myfood_app/models/product.dart';
 import 'package:myfood_app/provider/product_provider.dart';
 
-class Pizza extends StatelessWidget {
+class Burger extends StatelessWidget {
   Widget _buildSingleFeature({
     context,
     String foodTitle,
@@ -206,7 +206,7 @@ class Pizza extends StatelessWidget {
             ),
           ],
           titleSpacing: 20,
-          title: Text("Pizza"),
+          title: Text("Burgers"),
         ),
       ),
       body: Container(
@@ -221,32 +221,15 @@ class Pizza extends StatelessWidget {
                   children: [
                     _buildSingleFeature(
                       context: context,
-                      foodTitle: "Chicken Tikka",
-                      price: "\$80",
-                      image: "tikka",
+                      foodTitle: "Zinger Burger",
+                      price: "\$20",
+                      image: "bargar",
                     ),
                     _buildSingleFeature(
                       context: context,
-                      foodTitle: "Chicken Fajita",
-                      price: "\$70",
-                      image: "fajita",
-                    ),
-                  ],
-                ),
-                SizedBox(height: 30.0),
-                Row(
-                  children: [
-                    _buildSingleFeature(
-                      context: context,
-                      foodTitle: "Meat Pizza",
-                      price: "\$80 ",
-                      image: "fajita",
-                    ),
-                    _buildSingleFeature(
-                      context: context,
-                      foodTitle: "Cheese Pizza",
-                      price: "\$70 ",
-                      image: "tikka",
+                      foodTitle: "Chicken Burger",
+                      price: "\$25",
+                      image: "burger1",
                     ),
                   ],
                 ),
@@ -255,15 +238,32 @@ class Pizza extends StatelessWidget {
                   children: [
                     _buildSingleFeature(
                       context: context,
-                      foodTitle: "Pepperoni",
-                      price: "\$80",
-                      image: "tikka",
+                      foodTitle: "Spicy Burger",
+                      price: "\$34 ",
+                      image: "bargar",
                     ),
                     _buildSingleFeature(
                       context: context,
-                      foodTitle: "Veggie Pizza",
-                      price: "\$70",
-                      image: "fajita",
+                      foodTitle: "Crispy Burger",
+                      price: "\$25 ",
+                      image: "burger1",
+                    ),
+                  ],
+                ),
+                SizedBox(height: 30.0),
+                Row(
+                  children: [
+                    _buildSingleFeature(
+                      context: context,
+                      foodTitle: "ShotGun Burger",
+                      price: "\$20",
+                      image: "bargar",
+                    ),
+                    _buildSingleFeature(
+                      context: context,
+                      foodTitle: "Kentucky",
+                      price: "\$10",
+                      image: "burger1",
                     ),
                   ],
                 ),

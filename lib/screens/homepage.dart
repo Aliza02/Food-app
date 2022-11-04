@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:myfood_app/models/product.dart';
 import 'package:myfood_app/provider/product_provider.dart';
 import 'package:myfood_app/screens/about.dart';
+import 'package:myfood_app/screens/burger_category.dart';
 import 'package:myfood_app/screens/contact.dart';
 import 'package:myfood_app/screens/login.dart';
-// import 'package:myfood_app/screens/pizza.dart';
 import 'package:myfood_app/screens/pizza_category.dart';
 import 'package:myfood_app/screens/product_list.dart';
+import 'package:myfood_app/screens/salad_category.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -72,35 +73,6 @@ class HomePage extends StatelessWidget {
                         // backgroundColor: Theme.of(context).primaryColor,
                         disabledBackgroundColor: Colors.pinkAccent),
                   ),
-                  //
-                  // Row(
-                  //   children: [
-                  //     Icon(
-                  //       Icons.star,
-                  //       color: Colors.yellow[600],
-                  //     ),
-                  //     SizedBox(
-                  //       width: 5,
-                  //     ),
-                  //     Text(
-                  //       "$rating Ratings",
-                  //       style: TextStyle(
-                  //         fontSize: 16,
-                  //         color: Colors.grey,
-                  //       ),
-                  //     ),
-                  //     SizedBox(
-                  //       width: 10,
-                  //     ),
-                  //     Text(
-                  //       "\$$price",
-                  //       style: TextStyle(
-                  //           color: Theme.of(context).accentColor,
-                  //           fontSize: 22,
-                  //           fontWeight: FontWeight.w900),
-                  //     ),
-                  //   ],
-                  // ),
                 ),
               ],
             ),
@@ -136,16 +108,17 @@ class HomePage extends StatelessWidget {
         if (name == 'Salad') {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => Contact(),
+              builder: (context) => Salad(),
             ),
           );
-          if (name == 'Burger') {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => Contact(),
-              ),
-            );
-          }
+        }
+        if (name == 'Burger') {
+          debugPrint("dada");
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => Burger(),
+            ),
+          );
         }
       },
       child: Card(
@@ -317,28 +290,28 @@ class HomePage extends StatelessWidget {
                           _buildSingleFeature(
                             context: context,
                             foodTitle: "Cheese Pasta",
-                            price: "40 dollars",
+                            price: "\$40",
                             rating: "4.1",
                             image: "pastacheese",
                           ),
                           _buildSingleFeature(
                             context: context,
                             foodTitle: " Beef Steak",
-                            price: "50 dollars",
+                            price: "\$50",
                             rating: "5.0",
                             image: "chickenbrost",
                           ),
                           _buildSingleFeature(
                             context: context,
                             foodTitle: " Smash Burger",
-                            price: "80 dollars",
+                            price: "\$80",
                             rating: "5.0",
                             image: "bargar",
                           ),
                           _buildSingleFeature(
                             context: context,
                             foodTitle: " Fried Rice",
-                            price: "50 dollars",
+                            price: "\$50",
                             rating: "5.0",
                             image: "chickenbrost",
                           ),
