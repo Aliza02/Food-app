@@ -33,7 +33,6 @@ class MyApp extends StatelessWidget {
             backgroundColor: Colors.pinkAccent,
           ),
           primaryColor: Colors.pinkAccent,
-          // accentColor: Color(0xff04d4ee),
         ),
         home: Login(),
       ),
