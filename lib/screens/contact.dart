@@ -17,8 +17,6 @@ class _ContactState extends State<Contact> {
   final TextEditingController fullname = TextEditingController();
   final TextEditingController message = TextEditingController();
 
-  final GlobalKey<ScaffoldState> scaffold = GlobalKey<ScaffoldState>();
-
   void vaildation() {
     if (email.text.isEmpty && fullname.text.isEmpty && message.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -57,7 +55,6 @@ class _ContactState extends State<Contact> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      key: scaffold,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(
@@ -66,7 +63,7 @@ class _ContactState extends State<Contact> {
             size: 30,
           ),
           onPressed: () {
-            Navigator.of(context).pushReplacement(
+            Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (ctx) => HomePage(),
               ),

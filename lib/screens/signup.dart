@@ -69,7 +69,7 @@ class _SignUpState extends State<SignUp> {
       "UserAddress": address.text,
       "UserGender": isMale == true ? "Male" : "Female"
     });
-    Navigator.of(context).pushReplacement(
+    Navigator.of(context).push(
       MaterialPageRoute(
         builder: (ctx) => HomePage(),
       ),
@@ -136,8 +136,6 @@ class _SignUpState extends State<SignUp> {
       submit();
     }
   }
-
-  final GlobalKey<ScaffoldState> scaffold = GlobalKey<ScaffoldState>();
 
   Widget _buildAllTextFormField() {
     return Container(
@@ -221,11 +219,9 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffold,
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 0, horizontal: 20),
         margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-        // constraints: BoxConstraints.tightForFinite(height: 300),
         child: ListView(
           children: [
             Column(

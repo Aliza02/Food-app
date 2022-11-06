@@ -16,7 +16,6 @@ class HomePage extends StatelessWidget {
     context,
     String foodTitle,
     String image,
-    String rating,
     String price,
   }) {
     return Stack(
@@ -41,7 +40,6 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.w900),
                   ),
                 ),
-
                 Container(
                   margin: EdgeInsets.fromLTRB(20, 0, 0, 6),
                   child: Text(
@@ -49,10 +47,6 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ),
-                // Text(
-                //   foodSubTitle,
-                //   style: TextStyle(fontSize: 18, color: Colors.grey),
-                // ),
                 Container(
                   padding: EdgeInsets.all(5),
                   margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
@@ -70,7 +64,6 @@ class HomePage extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
-                        // backgroundColor: Theme.of(context).primaryColor,
                         disabledBackgroundColor: Colors.pinkAccent),
                   ),
                 ),
@@ -165,105 +158,6 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildTopPart(context) {
-    return Expanded(
-      child: Container(
-        child: Column(
-          children: [
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-              height: 20,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    icon: Icon(
-                      Icons.menu,
-                      size: 35,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {
-                      print("dada");
-                      // _scaffoldKey.currentState.openDrawer();
-                      Scaffold.of(context).openDrawer();
-                    },
-                  ),
-                  // Text(
-                  //   "Food App",
-                  //   style:
-                  //       TextStyle(fontSize: 26.0, fontWeight: FontWeight.bold),
-                  // ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.shopping_cart,
-                      size: 35,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {
-                      // FirebaseAuth.instance.signOut();
-                      print("added");
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => productlist()),
-                      );
-                    },
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Container(
-                  child: Column(
-                children: [
-                  Container(
-                    height: 0,
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      children: [
-                        // CircleAvatar(
-                        //   maxRadius: 45,
-                        //   backgroundColor: Colors.white,
-                        //   child: CircleAvatar(
-                        //     maxRadius: 40,
-                        //     backgroundImage:
-                        //         AssetImage("images/profileimage.jpg"),
-                        //   ),
-                        // ),
-                        // Container(
-                        //   height: 80,
-                        //   width: 180,
-                        //   child: ListTile(
-                        //     title: Text(
-                        //       "Have you upset",
-                        //       style: TextStyle(
-                        //         fontSize: 21,
-                        //         color: Colors.white,
-                        //         fontWeight: FontWeight.bold,
-                        //       ),
-                        //     ),
-                        //     subtitle: Text(
-                        //       "Stomach?",
-                        //       style: TextStyle(
-                        //         fontSize: 21,
-                        //         color: Colors.white,
-                        //         fontWeight: FontWeight.bold,
-                        //       ),
-                        //     ),
-                        //   ),
-                        // )
-                      ],
-                    ),
-                  )
-                ],
-              )),
-            ),
-          ],
-        ),
-        color: Theme.of(context).primaryColor,
-      ),
-    );
-  }
-
   Widget _buildFeatureProduct(context) {
     var size = MediaQuery.of(context).size;
     var height = size.height;
@@ -291,28 +185,24 @@ class HomePage extends StatelessWidget {
                             context: context,
                             foodTitle: "Cheese Pasta",
                             price: "\$40",
-                            rating: "4.1",
                             image: "pastacheese",
                           ),
                           _buildSingleFeature(
                             context: context,
                             foodTitle: " Beef Steak",
                             price: "\$50",
-                            rating: "5.0",
                             image: "chickenbrost",
                           ),
                           _buildSingleFeature(
                             context: context,
                             foodTitle: " Smash Burger",
                             price: "\$80",
-                            rating: "5.0",
                             image: "bargar",
                           ),
                           _buildSingleFeature(
                             context: context,
                             foodTitle: " Fried Rice",
                             price: "\$50",
-                            rating: "5.0",
                             image: "chickenbrost",
                           ),
                         ],
@@ -363,9 +253,6 @@ class HomePage extends StatelessWidget {
               ),
             ),
             Container(
-              // margin: EdgeInsets.only(
-              //     top: MediaQuery.of(context).size.width / 10,
-              //     bottom: MediaQuery.of(context).size.width / 10),
               width: double.infinity,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -403,10 +290,6 @@ class HomePage extends StatelessWidget {
       child: ListView(
         children: [
           UserAccountsDrawerHeader(
-            // currentAccountPicture: CircleAvatar(
-            //   // backgroundImage: AssetImage("images/profileimage.jpg"),
-
-            // ),
             accountName: Text("Food App"),
             accountEmail: Text("foodapp@gmail.com"),
           ),
@@ -420,7 +303,7 @@ class HomePage extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Navigator.of(context).pushReplacement(
+              Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => Contact(),
                 ),
@@ -435,7 +318,7 @@ class HomePage extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Navigator.of(context).pushReplacement(
+              Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => About(),
                 ),
@@ -481,14 +364,11 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
-      key: _scaffoldKey,
       drawer: _buildMyDrawer(context),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(100.0),
@@ -504,7 +384,6 @@ class HomePage extends StatelessWidget {
                   color: Colors.white,
                 ),
                 onPressed: () {
-                  // FirebaseAuth.instance.signOut();
                   print("added");
                   Navigator.push(
                     context,
@@ -522,7 +401,6 @@ class HomePage extends StatelessWidget {
         child: Container(
           child: Column(
             children: [
-              // _buildTopPart(context),
               _buildBottomPart(context),
             ],
           ),

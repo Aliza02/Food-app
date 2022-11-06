@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:myfood_app/provider/product_provider.dart';
+import 'package:myfood_app/screens/checkout.dart';
 import 'package:myfood_app/screens/homepage.dart';
 import 'package:myfood_app/models/product.dart';
 import 'package:provider/provider.dart';
@@ -60,6 +61,21 @@ class productlist extends StatelessWidget {
                       ),
                     ),
                   ),
+                ),
+              ),
+            ),
+            Container(
+              width: 400.0,
+              height: 60.0,
+              margin: EdgeInsets.fromLTRB(0, 0, 0, 20.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: ((context) => checkout())));
+                },
+                child: Text(
+                  'Checkout',
+                  style: TextStyle(fontSize: 20.0),
                 ),
               ),
             )

@@ -13,7 +13,7 @@ class About extends StatelessWidget {
             size: 30,
           ),
           onPressed: () {
-            Navigator.of(context).pushReplacement(
+            Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (ctx) => HomePage(),
               ),

@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:myfood_app/provider/product_provider.dart';
-import 'package:myfood_app/screens/checkout.dart';
 import 'package:myfood_app/screens/contact.dart';
-import 'package:myfood_app/screens/detail_screen.dart';
 import 'package:myfood_app/screens/homepage.dart';
 import 'package:myfood_app/screens/login.dart';
 import 'package:myfood_app/screens/product_list.dart';
-import 'package:myfood_app/screens/profile_screen.dart';
 import 'package:myfood_app/screens/signup.dart';
-import 'package:myfood_app/screens/skip_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() async {

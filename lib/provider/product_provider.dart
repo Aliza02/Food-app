@@ -2,9 +2,13 @@ import 'package:flutter/cupertino.dart';
 
 import '../models/product.dart';
 
+void main() {}
+
 class ProductProvider extends ChangeNotifier {
   List<product> added_product = [];
   List<product> product_price = [];
+  int total_price;
+
   get productlist {
     return product;
   }

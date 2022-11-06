@@ -16,7 +16,6 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final TextEditingController email = TextEditingController();
-  final GlobalKey<ScaffoldState> scaffold = GlobalKey<ScaffoldState>();
 
   bool isLoading = false;
   UserCredential authResult;
@@ -27,7 +26,7 @@ class _LoginState extends State<Login> {
     try {
       authResult = await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: email.text, password: password.text);
-      Navigator.of(context).pushReplacement(
+      Navigator.of(context).push(
         MaterialPageRoute(
           builder: (ctx) => HomePage(),
         ),
@@ -146,7 +145,7 @@ class _LoginState extends State<Login> {
       subTitle: "Sign Up",
       title: "I Don't Have An Account?",
       onTap: () {
-        Navigator.of(context).pushReplacement(
+        Navigator.of(context).push(
           MaterialPageRoute(
             builder: (ctx) => SignUp(),
           ),
@@ -159,7 +158,6 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      key: scaffold,
       backgroundColor: Color(0xfff8f8f8),
       body: SafeArea(
         child: Container(

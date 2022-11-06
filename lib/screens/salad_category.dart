@@ -37,7 +37,6 @@ class Salad extends StatelessWidget {
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
                   ),
                 ),
-
                 Container(
                   margin: EdgeInsets.fromLTRB(20, 0, 0, 6),
                   child: Text(
@@ -45,10 +44,6 @@ class Salad extends StatelessWidget {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ),
-                // Text(
-                //   foodSubTitle,
-                //   style: TextStyle(fontSize: 18, color: Colors.grey),
-                // ),
                 Container(
                   padding: EdgeInsets.all(5),
                   margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
@@ -66,7 +61,6 @@ class Salad extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
-                        // backgroundColor: Theme.of(context).primaryColor,
                         disabledBackgroundColor: Colors.pinkAccent),
                   ),
                 ),
@@ -93,16 +87,12 @@ class Salad extends StatelessWidget {
       child: ListView(
         children: [
           UserAccountsDrawerHeader(
-            // currentAccountPicture: CircleAvatar(
-            //   // backgroundImage: AssetImage("images/profileimage.jpg"),
-
-            // ),
             accountName: Text("Food App"),
             accountEmail: Text("foodapp@gmail.com"),
           ),
           ListTile(
             onTap: () {
-              Navigator.of(context).pushReplacement(
+              Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => HomePage(),
                 ),
@@ -117,7 +107,7 @@ class Salad extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Navigator.of(context).pushReplacement(
+              Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => Contact(),
                 ),
@@ -132,7 +122,7 @@ class Salad extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Navigator.of(context).pushReplacement(
+              Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => About(),
                 ),
@@ -180,7 +170,6 @@ class Salad extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // drawer: _buildMyDrawer(context),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(100.0),
         child: AppBar(
@@ -195,7 +184,6 @@ class Salad extends StatelessWidget {
                   color: Colors.white,
                 ),
                 onPressed: () {
-                  // FirebaseAuth.instance.signOut();
                   print("added");
                   Navigator.push(
                     context,

@@ -102,7 +102,7 @@ class Burger extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Navigator.of(context).pushReplacement(
+              Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => HomePage(),
                 ),
@@ -117,7 +117,7 @@ class Burger extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Navigator.of(context).pushReplacement(
+              Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => Contact(),
                 ),
@@ -132,7 +132,7 @@ class Burger extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Navigator.of(context).pushReplacement(
+              Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => About(),
                 ),
@@ -195,7 +195,6 @@ class Burger extends StatelessWidget {
                   color: Colors.white,
                 ),
                 onPressed: () {
-                  // FirebaseAuth.instance.signOut();
                   print("added");
                   Navigator.push(
                     context,
